@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konversi Bilangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 250px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><strong>Konversi Bilangan</strong></h1>
+  <input type="text" id="inputDesimal" placeholder="Masukkan Bilangan Desimal">
+  <button onclick="konversi()">Konversi</button>
+
+  <script>
+    function konversi() {
+      const input = document.getElementById('inputDesimal').value;
+      const desimal = parseInt(input);
+
+      // Validasi input
+      if (isNaN(desimal)) {
+        alert("Masukkan Angka yang benar!");
+        return;
+      }
+
+      const biner = desimal.toString(2);
+      const oktal = desimal.toString(8);
+      const heksa = desimal.toString(16).toUpperCase();
+
+      alert(`Biner : ${biner}\nOktal : ${oktal}\nHeksadesimal: ${heksa}`);
+    }
+  </script>
+
+</body>
+</html>
