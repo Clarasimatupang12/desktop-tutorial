@@ -3,20 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <title>Hoopla</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      height: 100%;
+    }
+
+    /* ✅ Latar belakang film */
+    body {
+      background: url('https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      position: relative;
+    }
+
+    /* ✅ Lapisan transparan di atas background */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* transparansi */
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2; /* supaya tampil di atas overlay */
+      padding: 40px;
+      padding-top: 120px;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .logo {
+      color: #00aaff;
+      font-size: 2rem;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .tagline {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .genre {
+      color: orange;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 20px 0;
+    }
+
+    .buttons button {
+      padding: 10px 25px;
+      margin: 10px;
+      border: 2px solid orange;
+      background: transparent;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .buttons button:hover {
+      background: orange;
+      color: black;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="navbar">
-      <h1 class="logo">hoopla</h1>
-      <ul class="nav-links">
-        <li>HOME</li>
-        <li>LIST MOVIE</li>
-        <li>CONTACT</li>
-        <li>ABOUT US</li>
-      </ul>
-    </div>
+  <!-- ✅ Overlay transparan -->
+  <div class="overlay"></div>
 
+  <!-- ✅ Navbar -->
+  <div class="navbar">
+    <h1 class="logo">hoopla</h1>
+    <ul class="nav-links">
+      <li>HOME</li>
+      <li>LIST MOVIE</li>
+      <li>CONTACT</li>
+      <li>ABOUT US</li>
+    </ul>
+  </div>
+
+  <!-- ✅ Isi konten -->
+  <div class="container">
     <div class="content">
       <h2 class="tagline">
         EXPLORER YOUR MOVIES <span class="genre">ACTION</span>
@@ -29,6 +142,25 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Tombol alert
+    document.getElementById("registerBtn").addEventListener("click", function () {
+      alert("Website Dalam Perbaikan");
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", function () {
+      alert("Website Dalam Perbaikan");
+    });
+
+    // Genre berubah otomatis
+    const genres = ["HORROR", "ACTION", "ROMANCE", "COMEDY"];
+    let index = 0;
+    const genreElement = document.querySelector(".genre");
+
+    setInterval(() => {
+      index = (index + 1) % genres.length;
+      genreElement.textContent = genres[index];
+    }, 4000);
+  </script>
 </body>
 </html>
